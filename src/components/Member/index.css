@@ -1,0 +1,33 @@
+.member-wrapper {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 5px;
+  width: 60px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 1px;
+  font-size: 70%;
+}
+
+.member-wrapper.big {
+  width: 150px;
+  font-size: 100%;
+}
+
+.member {
+  margin: auto;
+  width: 100%;
+}
+
+.member-picture {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 1px;
+  width: 100%;
+}
+
+.member-name {
+  color: white;
+}

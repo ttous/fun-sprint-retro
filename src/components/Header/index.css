@@ -1,0 +1,17 @@
+header {
+  background-color: rgb(240, 240, 240);
+}
+
+#header-info {
+  display: flex;
+}
+
+#header-title, #header-hour {
+  display: inline-block;
+  flex: 4;
+  margin-top: 10px;
+}
+
+#header-life-points {
+  flex: 4;
+}

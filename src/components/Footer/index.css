@@ -1,0 +1,32 @@
+footer {
+  display: flex;
+  background-color: rgb(240, 240, 240);
+}
+
+#button-prev, #button-next {
+  font-size: 30px;
+  line-height: 45px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: rgb(104, 62, 58);
+  color: white;
+}
+
+#footer-info, #button-prev-container, #button-next-container {
+  display: inline-block;
+}
+
+#footer-info {
+  flex: 10;
+  padding-top: 20px;
+}
+
+#button-prev-container {
+  flex: 1;
+}
+
+#button-next-container {
+  flex: 1;
+}

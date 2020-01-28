@@ -1,0 +1,17 @@
+#cohesion-page {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+#cohesion-member, #cohesion-votes {
+  flex: 3;
+}
+
+#cohesion-chart {
+  flex: 6;
+}
+
+#cohesion-axis {
+  margin-bottom: 20px
+}
