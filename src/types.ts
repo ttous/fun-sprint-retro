@@ -1,14 +1,3 @@
-import william from "./images/members/memberX.png";
-import james from "./images/members/memberX.png";
-import mason from "./images/members/memberX.png";
-import harper from "./images/members/memberX.png";
-import evelyn from "./images/members/memberX.png";
-import ella from "./images/members/memberX.png";
-import avery from "./images/members/memberX.png";
-import jackson from "./images/members/memberX.png";
-import scarlett from "./images/members/memberX.png";
-import madison from "./images/members/memberX.png";
-
 export enum BasicColor {
   BLACK = "rgb(0, 0, 0)",
   BLACK_TRANSPARENT = "rgba(0, 0, 0, 0.05)",
@@ -69,7 +58,9 @@ export interface IPoint {
 
 export type Color = BasicColor | MemberColor | SpecialColor;
 
-export type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & { length: TLength };
+export type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & {
+  length: TLength;
+};
 
 export const COHESION_AXES: Tuple<string, 5> = [
   "Trust",
@@ -84,19 +75,6 @@ export const ESVP_ORDER: Esvp[] = [
   Esvp.SHOPPER,
   Esvp.VACATIONER,
   Esvp.PRISONER,
-];
-
-export const MEMBERS: Array<Omit<IMember, "color">> = [
-  { cohesion: [], name: "William", picture: william },
-  { cohesion: [], name: "James", picture: james },
-  { cohesion: [], name: "Mason", picture: mason },
-  { cohesion: [], name: "Harper", picture: harper },
-  { cohesion: [], name: "Evelyn", picture: evelyn },
-  { cohesion: [], name: "Ella", picture: ella },
-  { cohesion: [], name: "Avery", picture: avery },
-  { cohesion: [], name: "Jackson", picture: jackson },
-  { cohesion: [], name: "Scarlett", picture: scarlett },
-  { cohesion: [], name: "Madison", picture: madison },
 ];
 
 export const MEMBERS_COLORS: MemberColor[] = [

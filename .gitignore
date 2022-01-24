@@ -1,3 +1,4 @@
 node_modules
 src/images/members
 !src/images/members/memberX.png
+src/env.ts

@@ -1,9 +1,10 @@
 import React from "react";
-import "./index.css";
-import logo from "../../images/logo.png";
-import { IMember, MEMBERS_COLORS, MEMBERS } from "../../types";
-import MemberForm from "../../components/MemberForm";
 import { MembersContext } from "../../components/App";
+import MemberForm from "../../components/MemberForm";
+import { MEMBERS } from "../../env";
+import logo from "../../images/logo.png";
+import { IMember, MEMBERS_COLORS } from "../../types";
+import "./index.css";
 
 // Should be 15 max
 const MAX_MEMBER_COUNT: number = 10;
@@ -12,9 +13,7 @@ interface IMembersProps {
   onSetMembers: (members: IMember[]) => void;
 }
 
-export default function Members({
-  onSetMembers,
-}: IMembersProps) {
+export default function Members({ onSetMembers }: IMembersProps) {
   const members: IMember[] = React.useContext(MembersContext);
 
   // Reset on "escape"
@@ -28,8 +27,13 @@ export default function Members({
     return () => document.removeEventListener("keydown", keydownHandler);
   }, [onSetMembers]);
 
-  const availableMembers: Omit<IMember, "color">[] = MEMBERS.filter(({ name }) => {
-    const takenNames: string[] = members.map(({ name: takenName }) => takenName);
+  const availableMembers: Omit<IMember, "color">[] = MEMBERS.map((member) => ({
+    ...member,
+    cohesion: [],
+  })).filter(({ name }) => {
+    const takenNames: string[] = members.map(
+      ({ name: takenName }) => takenName
+    );
     return !takenNames.includes(name);
   });
 
@@ -60,19 +64,14 @@ export default function Members({
 
   return (
     <div id="members-page">
-      <img
-        alt="logo"
-        className="logo"
-        src={logo}
-        width={100}
-      />
+      <img alt="logo" className="logo" src={logo} width={100} />
 
       <div className="members-forms">
         <p>{"Crew members : "}</p>
 
         {filledMemberForms}
 
-        {members.length < MAX_MEMBER_COUNT &&
+        {members.length < MAX_MEMBER_COUNT && (
           <MemberForm
             availableMembers={availableMembers}
             color={MEMBERS_COLORS[members.length % MEMBERS_COLORS.length]}
@@ -80,11 +79,10 @@ export default function Members({
               const newMembers: IMember[] = members.concat(newMember);
               onSetMembers(newMembers);
             }}
-            onDelete={() => { }}
+            onDelete={() => {}}
           />
-        }
+        )}
       </div>
-
     </div>
   );
 }
