@@ -8,19 +8,6 @@ interface ISquareProps {
   color: Color;
 }
 
-export default function Square({
-  x,
-  y,
-  size,
-  color,
-}: ISquareProps) {
-  return (
-    <rect
-      x={x}
-      y={y}
-      width={size}
-      height={size}
-      fill={color}
-    />
-  );
+export default function Square({ x, y, size, color }: ISquareProps) {
+  return <rect x={x} y={y} width={size} height={size} fill={color} />;
 }

@@ -24,15 +24,13 @@ const DEFAULT_PROPS = {
   width: 500,
 };
 
-export default function RadarChart<C extends number>(props: IRadarChartProps<C>) {
-  const {
-    axes,
-    colors,
-    mainColor,
-    maxAxisValue,
-    values,
-    width,
-  } = { ...DEFAULT_PROPS, ...props };
+export default function RadarChart<C extends number>(
+  props: IRadarChartProps<C>
+) {
+  const { axes, colors, mainColor, maxAxisValue, values, width } = {
+    ...DEFAULT_PROPS,
+    ...props,
+  };
 
   const center: IPoint = {
     x: width / 2,
@@ -40,18 +38,20 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
   };
   const axesPoints: IPoint[] = [];
 
-  const valueLength: number = (width / 2) / maxAxisValue;
+  const valueLength: number = width / 2 / maxAxisValue;
   const interAxisAngle: number = (2 * Math.PI) / axes.length; // in radians
 
   const valueCircles: JSX.Element[] = [];
   for (let i: number = 0; i <= maxAxisValue; i++) {
-    valueCircles.push(<Circle
-      key={`valueCircle-${i}`}
-      fill={BasicColor.BLACK_TRANSPARENT}
-      radius={i * valueLength}
-      stroke={BasicColor.GRAY}
-      width={width}
-    />);
+    valueCircles.push(
+      <Circle
+        key={`valueCircle-${i}`}
+        fill={BasicColor.BLACK_TRANSPARENT}
+        radius={i * valueLength}
+        stroke={BasicColor.GRAY}
+        width={width}
+      />
+    );
   }
 
   const axesLines: JSX.Element[] = [];
@@ -62,21 +62,21 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
 
     axesPoints[i] = { x, y };
 
-    axesLines.push(<Line
-      key={`axisLine-${i}`}
-      x1={center.x}
-      y1={center.y}
-      x2={x}
-      y2={y}
-    />);
+    axesLines.push(
+      <Line key={`axisLine-${i}`} x1={center.x} y1={center.y} x2={x} y2={y} />
+    );
 
-    axesLabels.push(<Text
-      key={`valueCircle-${i}`}
-      {...{ x, y, }}
-      transform={`translate(${0.2 * (x - center.x)}, ${0.2 * (y - center.y)})`}
-    >
-      {axes[i]}
-    </Text>);
+    axesLabels.push(
+      <Text
+        key={`valueCircle-${i}`}
+        {...{ x, y }}
+        transform={`translate(${0.2 * (x - center.x)}, ${
+          0.2 * (y - center.y)
+        })`}
+      >
+        {axes[i]}
+      </Text>
+    );
   }
 
   const valuesPoints: Array<Array<IPoint>> = [];
@@ -87,8 +87,14 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
 
     for (let axisI: number = 0; axisI < axesPoints.length; axisI++) {
       if (!isNaN(values[memberI][axisI])) {
-        const x: number = center.x + (axesPoints[axisI].x - center.x) * (values[memberI][axisI] / maxAxisValue);
-        const y: number = center.y + (axesPoints[axisI].y - center.y) * (values[memberI][axisI] / maxAxisValue);
+        const x: number =
+          center.x +
+          (axesPoints[axisI].x - center.x) *
+            (values[memberI][axisI] / maxAxisValue);
+        const y: number =
+          center.y +
+          (axesPoints[axisI].y - center.y) *
+            (values[memberI][axisI] / maxAxisValue);
 
         valuesPoints[memberI].push({ x, y });
 
@@ -102,8 +108,7 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
               radius={8}
             />
           );
-        }
-        else {
+        } else {
           valuesPointsCircles.push(
             <Circle
               key={`value-point-${memberI}-${axisI}`}
@@ -135,8 +140,7 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
               y2={valuesPoints[memberI][axisI + 1].y}
             />
           );
-        }
-        else {
+        } else {
           valuesLines.push(
             <Line
               key={`value-line-${memberI}-${axisI}`}
@@ -149,8 +153,7 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
             />
           );
         }
-      }
-      else if (axisI === axesPoints.length - 1) {
+      } else if (axisI === axesPoints.length - 1) {
         if (colors[memberI] === mainColor) {
           mainColorValuesLines.push(
             <Line
@@ -163,8 +166,7 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
               y2={valuesPoints[memberI][0].y}
             />
           );
-        }
-        else {
+        } else {
           valuesLines.push(
             <Line
               key={`value-line-${memberI}-${axisI}`}
@@ -177,16 +179,12 @@ export default function RadarChart<C extends number>(props: IRadarChartProps<C>)
             />
           );
         }
-      }
-      else break;
+      } else break;
     }
   }
 
   return (
-    <svg
-      height={width}
-      width={width}
-    >
+    <svg height={width} width={width}>
       {/* CIRCLES */}
       {valueCircles}
 

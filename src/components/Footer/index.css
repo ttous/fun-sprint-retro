@@ -3,7 +3,8 @@ footer {
   background-color: rgb(240, 240, 240);
 }
 
-#button-prev, #button-next {
+#button-prev,
+#button-next {
   font-size: 30px;
   line-height: 45px;
   height: 50px;
@@ -14,7 +15,9 @@ footer {
   color: white;
 }
 
-#footer-info, #button-prev-container, #button-next-container {
+#footer-info,
+#button-prev-container,
+#button-next-container {
   display: inline-block;
 }
 

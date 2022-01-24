@@ -15,14 +15,10 @@ const DEFAULT_PROPS = {
 };
 
 export default function Line(props: ILineProps) {
-  const {
-    stroke,
-    strokeWidth,
-    x1,
-    y1,
-    x2,
-    y2,
-  } = { ...DEFAULT_PROPS, ...props };
+  const { stroke, strokeWidth, x1, y1, x2, y2 } = {
+    ...DEFAULT_PROPS,
+    ...props,
+  };
 
   return (
     <line

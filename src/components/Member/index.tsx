@@ -8,11 +8,7 @@ interface IMemberProps {
 }
 
 export default function Member({
-  member: {
-    color,
-    name,
-    picture,
-  },
+  member: { color, name, picture },
   big,
 }: IMemberProps) {
   return (
@@ -21,14 +17,8 @@ export default function Member({
       style={{ backgroundColor: color }}
     >
       <div className="member">
-        <img
-          alt={name}
-          className="member-picture"
-          src={picture}
-        />
-        <div className="member-name">
-          {name}
-        </div>
+        <img alt={name} className="member-picture" src={picture} />
+        <div className="member-name">{name}</div>
       </div>
     </div>
   );

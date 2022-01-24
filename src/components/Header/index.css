@@ -6,7 +6,8 @@ header {
   display: flex;
 }
 
-#header-title, #header-hour {
+#header-title,
+#header-hour {
   display: inline-block;
   flex: 4;
   margin-top: 10px;

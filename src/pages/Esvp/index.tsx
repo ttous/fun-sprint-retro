@@ -8,9 +8,7 @@ interface IEsvpProps {
   onSetMembers: (members: IMember[]) => void;
 }
 
-export default function Esvp({
-  onSetMembers,
-}: IEsvpProps) {
+export default function Esvp({ onSetMembers }: IEsvpProps) {
   const members: IMember[] = React.useContext<IMember[]>(MembersContext);
   const [memberIndex, setMemberIndex] = React.useState<number>(0);
 
@@ -36,7 +34,7 @@ export default function Esvp({
         });
         onSetMembers(newMembers);
         autoSetMemberIndex();
-      };
+      }
     };
 
     document.addEventListener("keydown", keydownHandler);
@@ -80,53 +78,32 @@ export default function Esvp({
     for (let j: number = 0; j < members.length; j++) {
       if (members[j].esvp === ESVP_ORDER[i]) {
         esvpCellMembers.push(
-          <Member
-            key={`esvp-member-${j}`}
-            member={members[j]}
-          />
+          <Member key={`esvp-member-${j}`} member={members[j]} />
         );
       }
     }
 
-    esvpCells.push(
-      <td
-        key={`esvp-${i}`}
-      >
-        {esvpCellMembers}
-      </td>
-    );
+    esvpCells.push(<td key={`esvp-${i}`}>{esvpCellMembers}</td>);
   }
 
   return (
     <div id="esvp-page">
       <div id="esvp-member">
-        {members[memberIndex] &&
-          <Member big member={members[memberIndex]} />
-        }
+        {members[memberIndex] && <Member big member={members[memberIndex]} />}
       </div>
 
       <div id="esvp-table">
         <table>
           <thead>
-            <tr>
-              {esvpHeads}
-            </tr>
+            <tr>{esvpHeads}</tr>
           </thead>
           <tbody>
-            <tr>
-              {esvpCells}
-            </tr>
+            <tr>{esvpCells}</tr>
           </tbody>
         </table>
       </div>
 
-      <div id="esvp-votes">
-        {members[memberIndex] &&
-          <>
-            {esvpButtons}
-          </>
-        }
-      </div>
+      <div id="esvp-votes">{members[memberIndex] && <>{esvpButtons}</>}</div>
     </div>
   );
 }

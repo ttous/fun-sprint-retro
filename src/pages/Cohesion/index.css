@@ -4,7 +4,8 @@
   align-items: center;
 }
 
-#cohesion-member, #cohesion-votes {
+#cohesion-member,
+#cohesion-votes {
   flex: 3;
 }
 

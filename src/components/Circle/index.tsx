@@ -18,28 +18,23 @@ const DEFAULT_PROPS = {
 };
 
 export default function Circle(props: ICircleProps) {
-  let {
-    fill,
-    stroke,
-    strokeWidth,
-    radius,
-    width,
-    x,
-    y,
-  } = { ...DEFAULT_PROPS, ...props };
+  let { fill, stroke, strokeWidth, radius, width, x, y } = {
+    ...DEFAULT_PROPS,
+    ...props,
+  };
 
   if (!width) width = 2 * radius;
 
   return (
-      <circle
-        {...{
-          stroke,
-          strokeWidth,
-          fill,
-        }}
-        cx={x !== undefined ? x : width / 2}
-        cy={y !== undefined ? y : width / 2}
-        r={radius}
-      />
+    <circle
+      {...{
+        stroke,
+        strokeWidth,
+        fill,
+      }}
+      cx={x !== undefined ? x : width / 2}
+      cy={y !== undefined ? y : width / 2}
+      r={radius}
+    />
   );
 }

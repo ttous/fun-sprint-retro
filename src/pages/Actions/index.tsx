@@ -9,9 +9,7 @@ export default function Actions() {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <button id="confluence-button">
-          {"Confluence"}
-        </button>
+        <button id="confluence-button">{"Confluence"}</button>
       </a>
     </div>
   );

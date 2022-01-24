@@ -11,9 +11,7 @@ interface ICohesionProps {
   onSetMembers: (members: IMember[]) => void;
 }
 
-export default function Cohesion({
-  onSetMembers,
-}: ICohesionProps) {
+export default function Cohesion({ onSetMembers }: ICohesionProps) {
   const members: IMember[] = React.useContext<IMember[]>(MembersContext);
   const [memberIndex, setMemberIndex] = React.useState<number>(0);
   const [axisIndex, setAxisIndex] = React.useState<number>(0);
@@ -44,7 +42,7 @@ export default function Cohesion({
         });
         onSetMembers(newMembers);
         autoSetMemberAndAxeIndices();
-      };
+      }
     };
 
     document.addEventListener("keydown", keydownHandler);
@@ -66,7 +64,7 @@ export default function Cohesion({
           autoSetMemberAndAxeIndices();
         }}
       >
-        {i * 100 / MAX_AXIS_VALUE}
+        {(i * 100) / MAX_AXIS_VALUE}
       </button>
     );
   }
@@ -87,9 +85,7 @@ export default function Cohesion({
   return (
     <div id="cohesion-page">
       <div id="cohesion-member">
-        {members[memberIndex] &&
-          <Member big member={members[memberIndex]} />
-        }
+        {members[memberIndex] && <Member big member={members[memberIndex]} />}
       </div>
 
       <div id="cohesion-chart">
@@ -104,16 +100,12 @@ export default function Cohesion({
       </div>
 
       <div id="cohesion-votes">
-        {COHESION_AXES[axisIndex] &&
+        {COHESION_AXES[axisIndex] && (
           <>
-            <div id="cohesion-axis">
-              {COHESION_AXES[axisIndex]}
-            </div>
-            <div>
-              {voteButtons}
-            </div>
+            <div id="cohesion-axis">{COHESION_AXES[axisIndex]}</div>
+            <div>{voteButtons}</div>
           </>
-        }
+        )}
       </div>
     </div>
   );

@@ -19,14 +19,15 @@ export default function MemberForm({
   onChange,
   onDelete,
 }: IMemberFormProps) {
-
   return (
     <select
       className="member-form"
       value={initialValue || DEFAULT_VALUE}
       name="name"
       onChange={({ target: { value } }) => {
-        const selectedMember = availableMembers.find(({ name }) => name === value);
+        const selectedMember = availableMembers.find(
+          ({ name }) => name === value
+        );
 
         if (!selectedMember) onDelete();
         else {
@@ -41,16 +42,9 @@ export default function MemberForm({
       style={{ borderColor: color }}
     >
       <option value={DEFAULT_VALUE}></option>
-      {initialValue &&
-        <option value={initialValue}>
-          {initialValue}
-        </option>
-      }
+      {initialValue && <option value={initialValue}>{initialValue}</option>}
       {availableMembers.map(({ name }, memberIndex) => (
-        <option
-          key={`member-${memberIndex}`}
-          value={name}
-        >
+        <option key={`member-${memberIndex}`} value={name}>
           {name}
         </option>
       ))}

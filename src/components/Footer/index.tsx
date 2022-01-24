@@ -8,11 +8,7 @@ interface IFooterProps {
   onNext?: () => void;
 }
 
-export default function Footer({
-  currPage,
-  onPrev,
-  onNext,
-}: IFooterProps) {
+export default function Footer({ currPage, onPrev, onNext }: IFooterProps) {
   // Navigation throw keyboard arrows
   React.useEffect(() => {
     const keydownHandler = (event: KeyboardEvent): void => {
@@ -29,29 +25,21 @@ export default function Footer({
   return (
     <footer>
       <div id="button-prev-container">
-        {onPrev !== undefined &&
-          <button
-            id="button-prev"
-            onClick={onPrev}
-          >
+        {onPrev !== undefined && (
+          <button id="button-prev" onClick={onPrev}>
             {"<"}
           </button>
-        }
+        )}
       </div>
 
-      <div id="footer-info">
-        {currPage.toUpperCase()}
-      </div>
+      <div id="footer-info">{currPage.toUpperCase()}</div>
 
       <div id="button-next-container">
-        {onNext !== undefined &&
-          <button
-            id="button-next"
-            onClick={onNext}
-          >
+        {onNext !== undefined && (
+          <button id="button-next" onClick={onNext}>
             {">"}
           </button>
-        }
+        )}
       </div>
     </footer>
   );

@@ -10,12 +10,7 @@ interface ITextProps {
 const DEFAULT_PROPS = {};
 
 export default function Text(props: ITextProps) {
-  const {
-    children,
-    transform,
-    x,
-    y,
-  } = { ...DEFAULT_PROPS, ...props };
+  const { children, transform, x, y } = { ...DEFAULT_PROPS, ...props };
 
   return (
     <text

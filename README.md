@@ -8,8 +8,8 @@
    ```
 1. Add pictures for your members at `src/images/members/` (optional).
 1. Copy the `src/env.example.ts` file to a new `src/env.ts` file (git ignored).
-2. Add your members to the `MEMBERS` variable in `src/env.ts`: set their name and the path to their corresponding picture).
-3. Start the application:
+1. Add your members to the `MEMBERS` variable in `src/env.ts`: set their name and the path to their corresponding picture).
+1. Start the application:
    ```bash
    yarn start
    ```
@@ -62,6 +62,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 # Sources
+
 - Logo: [ttous](https://github.com/ttous)
-- Speedboat image:  [Atlas Management](https://atlasmanagement.nc/budget-embarquez-simplement-dans-votre-transformation-financiere-1-3/).
+- Speedboat image: [Atlas Management](https://atlasmanagement.nc/budget-embarquez-simplement-dans-votre-transformation-financiere-1-3/).
 - Ending image: [Plus PNG](http://pluspng.com/png-58843.html).

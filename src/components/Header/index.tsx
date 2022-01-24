@@ -8,21 +8,16 @@ interface IHeaderProps {
   hideMembers?: boolean;
 }
 
-export default function Header({
-  hideMembers,
-}: IHeaderProps) {
+export default function Header({ hideMembers }: IHeaderProps) {
   const members = React.useContext(MembersContext);
 
-  const [hour, setHour] = React.useState<string>(new Date().toLocaleTimeString("fr"));
+  const [hour, setHour] = React.useState<string>(
+    new Date().toLocaleTimeString("fr")
+  );
 
   const membersIcons: JSX.Element[] = [];
   for (let i: number = 0; i < members.length; i++) {
-    membersIcons.push(
-      <Member
-        key={`member-${i}`}
-        member={members[i]}
-      />
-    );
+    membersIcons.push(<Member key={`member-${i}`} member={members[i]} />);
   }
 
   const hourInterval = window.setInterval(
@@ -32,27 +27,19 @@ export default function Header({
 
   React.useEffect(() => {
     return () => window.clearInterval(hourInterval);
-  })
+  });
 
   return (
     <header>
       <div id="header-info">
-        <div id="header-title">
-          {"Retrospective"}
-        </div>
+        <div id="header-title">{"Retrospective"}</div>
         <div id="header-life-points">
           <LifePoints />
         </div>
-        <div id="header-hour">
-          {hour}
-        </div>
+        <div id="header-hour">{hour}</div>
       </div>
 
-      {!hideMembers &&
-        <>
-          {membersIcons}
-        </>
-      }
+      {!hideMembers && <>{membersIcons}</>}
     </header>
   );
 }
