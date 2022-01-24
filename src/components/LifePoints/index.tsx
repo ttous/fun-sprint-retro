@@ -1,28 +1,26 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./index.css";
 import Heart from "../Heart";
 
-export const DEFAULT_LIFE_POINT_COUNT: number = 5;
+export const HEART_COUNT: number = 5;
 
 export default function LifePoints() {
-  const [lifePoints, setLifePoints] = React.useState<number>(DEFAULT_LIFE_POINT_COUNT);
+  const [lifePoints, setLifePoints] = React.useState<number>(HEART_COUNT);
 
-  const lifePointHearts: JSX.Element[] = [];
-  for (let i: number = 0; i < DEFAULT_LIFE_POINT_COUNT; i++) {
-    lifePointHearts.push(
-      <Heart
-        key={`heart-${i}`}
-        filled={i < lifePoints}
-      />
-    );
-  }
+  const handleClick = useCallback(() => setLifePoints((prevLifePoints) => prevLifePoints > 0
+    ? prevLifePoints - 1
+    : 0), []);
+  const handleDoubleClick = useCallback(() => setLifePoints(HEART_COUNT), []);
+
+  const lifePointHearts: React.ReactNode[] = Array.from(Array(HEART_COUNT)).map((_, index) => (
+    <Heart key={index} filled={index < lifePoints} />
+    ))
 
   return (
     <div
       className="life-points"
-      onClick={lifePoints > 0
-        ? () => setLifePoints(lifePoints - 1)
-        : undefined}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
     >
       {lifePointHearts}
     </div>
