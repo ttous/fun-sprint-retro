@@ -58,6 +58,7 @@ export default function Cohesion({
     voteButtons.push(
       <button
         key={`vote-button-${i}`}
+        className="vote-button"
         onClick={() => {
           const newMembers = [...members];
           newMembers[memberIndex].cohesion[axisIndex] = i;
