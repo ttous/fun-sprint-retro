@@ -9,9 +9,6 @@ export default function Opening() {
         alt="logo GIF"
         className="logo-gif"
         src={logoGif}
-        style={{
-          height: "70vh",
-        }}
       />
     </div>
   );

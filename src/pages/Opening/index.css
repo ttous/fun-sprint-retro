@@ -1,6 +1,7 @@
 #opening-page {
   background-color: black;
   height: 100%;
+  position: relative;
 }
 
 .opening--members {
@@ -16,4 +17,5 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  height: 100%;
 }
