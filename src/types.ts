@@ -64,7 +64,7 @@ export type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & {
 
 export const COHESION_AXES: Tuple<string, 5> = [
   "Trust",
-  "Conflict",
+  "Agreement",
   "Commitment",
   "Accountability",
   "Results",
